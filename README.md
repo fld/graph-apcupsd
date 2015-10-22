@@ -54,3 +54,6 @@ $ sudo crontab -e
     </IfDefine>
 </IfModule>
 ```
+
+### Viewing statistics ###
+By default, the script generates __index.html__ and __\<time_period\>[s].png__ files to: __/usr/lib/cgi-bin/apcupsd/__ which (by default) is accessible at: <http://localhost/cgi-bin/apcupsd/>
