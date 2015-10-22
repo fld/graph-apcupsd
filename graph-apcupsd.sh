@@ -213,7 +213,7 @@ done
 <body>
     <section>
         <div id="thumbnails">
-            <div id="viewer"><img src="" border="0" /></div>
+            <div id="viewer"><img src="" alt="Select a graph to view:" border="0" /></div>
 EOF
 echo -e "${thumbs_html::-2}" >> "$rrd_graphdir/index.html"
 cat << 'EOF' >> "$rrd_graphdir/index.html"
