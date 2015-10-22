@@ -1,6 +1,7 @@
 # graph-apcupsd
 cron shell script for logging/graphing apcupsd on Debian jessie.
 
+![graph-apcupsd](http://i.imgur.com/vy80B9u.png =128x128 "graph-apcupsd v1.0 @ 1440x1000-resolution")
 ### Install ###
 ```
 sudo apt-get install rrdtool apcupsd apcupsd-cgi imagemagick
