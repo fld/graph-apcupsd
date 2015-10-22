@@ -1,9 +1,11 @@
 # graph-apcupsd
 cron shell script for logging/graphing apcupsd on Debian jessie.
+
+### Install ###
 ```
 sudo apt-get install rrdtool apcupsd apcupsd-cgi imagemagick
+sudo git clone "git@github.com:fld/graph-apcupsd.git" /etc/apcupsd/
 ```
-
 ### Creating rrdtool database ###
 ```
 sudo rrdtool create /etc/apcupsd/apcupsd.rrd \
