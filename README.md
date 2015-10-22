@@ -4,6 +4,7 @@ cron shell script for logging/graphing apcupsd on Debian jessie.
 sudo apt-get install rrdtool apcupsd apcupsd-cgi imagemagick
 
 ### Creating rrdtool database ###
+```
 sudo rrdtool create /etc/apcupsd/apcupsd.rrd \
 --step '60' \
 'DS:LINEV:GAUGE:120:0:300' \
@@ -13,6 +14,7 @@ sudo rrdtool create /etc/apcupsd/apcupsd.rrd \
 'DS:BATTV:GAUGE:120:0:300' \
 'DS:NUMXFERS:COUNTER:120:0:65536' \
 'RRA:LAST:0.5:1:5256000'
+```
 
 ### Cron job ###
 $ sudo crontab -e
