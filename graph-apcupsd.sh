@@ -186,7 +186,7 @@ done
         a:hover { color:#DC9C2D; }
         #viewer { text-align:center; }
         .thumb { float:left; margin:10px; padding:2px; opacity:0.60; border:1px solid #624514; }
-        .thumb.hover, .thumb:hover { opacity:1.0; -webkit-box-shadow:0 0 10px #624514; box-shadow:0 0 10px #624514; }
+        .thumb.hover, .thumb:hover { opacity:1.0; box-shadow:0 0 10px #624514; }
         .thumb div { margin-left:5px; margin-bottom:3px; margin-top:3px; font-size:12px; background-color:black; }
         #footer { position:fixed; bottom: 0; width:100%; padding: 3px; background-color:#000000; text-align:center; font-size:10px; }
     </style>
