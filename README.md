@@ -1,5 +1,9 @@
 # graph-apcupsd
-cron shell script for logging/graphing apcupsd on Debian jessie.
+Bash shell script for logging/graphing apcupsd on Debian jessie.
+
+ * Logs parameters given by 'apaccess status' to a rrdtool-database
+ * Generates multiple graphs with thumbnails
+ * Generates a simple dynamic html/js thumbnail gallery for the graphs
 
 ![graph-apcupsd](http://i.imgur.com/vy80B9u.png =128x128 "graph-apcupsd v1.0 @ 1440x1000-resolution")
 ### Install ###
@@ -8,6 +12,9 @@ sudo apt-get install rrdtool apcupsd apcupsd-cgi imagemagick git
 sudo git clone "git@github.com:fld/graph-apcupsd.git" /etc/apcupsd/
 ```
 ### Creating rrdtool database ###
+Create a database for logging: _line voltage_, _load percentage_, _output voltage_, _internal temperature_, _battery voltage_ and number of _transfer events_ via _'apcaccess status'_.
+
+I choose to go with a sampling frequency of _60 seconds_, because that is how often _'apcaccess status'_ updates it's values. The RRA row count of _'5256000'_ is enough for _10-years_ worth of data.
 ```
 sudo rrdtool create /etc/apcupsd/apcupsd.rrd \
 --step '60' \
@@ -22,12 +29,23 @@ sudo rrdtool create /etc/apcupsd/apcupsd.rrd \
 
 ### Cron job ###
 $ sudo crontab -e
+
+Add:
 ```
 */1 * * * * /etc/apcupsd/cron-apcupsd.sh
 ```
+alternatively it could be placed at: _/etc/cron.d/graph-apcupsd_
 
 ### Apache configuration ###
-/etc/apache2/conf-enabled/serve-cgi-bin.conf:
+The default Apache configuration for _'apcupsd-cgi'_ needs to be tweaked to allow images and html content:
+```
+<FilesMatch \.png$>SetHandler image/png </FilesMatch>
+<FilesMatch \.html$>SetHandler .html</FilesMatch>
+```
+
+For example, on Debian jessie:
+
+_/etc/apache2/conf-enabled/serve-cgi-bin.conf_:
 ```
 <IfModule mod_alias.c>
     <IfModule mod_cgi.c>
