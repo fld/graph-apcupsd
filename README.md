@@ -19,11 +19,12 @@ I choose to go with a sampling frequency of _60 seconds_, because that is how of
 sudo rrdtool create /etc/apcupsd/apcupsd.rrd \
 --step '60' \
 'DS:LINEV:GAUGE:120:0:300' \
-'DS:LOADPCT:GAUGE:120:0:200' \
+'DS:LOADPCT:GAUGE:120:0:300' \
 'DS:OUTPUTV:GAUGE:120:0:300' \
 'DS:ITEMP:GAUGE:120:0:128' \
-'DS:BATTV:GAUGE:120:0:300' \
-'DS:NUMXFERS:COUNTER:120:0:65536' \
+'DS:BATTV:GAUGE:120:0:50' \
+'DS:NUMXFERS:DERIVE:120:0:U' \
+'DS:TONBATT:GAUGE:120:0:U' \
 'RRA:LAST:0.5:1:5256000'
 ```
 
