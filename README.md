@@ -5,7 +5,8 @@ Bash shell script for logging/graphing apcupsd on Debian jessie.
  * Generates multiple graphs with thumbnails
  * Generates a simple dynamic html/js thumbnail gallery for the graphs
 
-![graph-apcupsd](http://i.imgur.com/vy80B9u.png =128x128 "graph-apcupsd v1.0 @ 1440x1000-resolution")
+![graph-apcupsd](http://i.imgur.com/Il1auzU.png "graph-apcupsd v1.1 Graph")
+![graph-apcupsd](http://i.imgur.com/vy80B9u.png "graph-apcupsd v1.0 Web UI")
 ### Install ###
 ```
 sudo apt-get install rrdtool apcupsd apcupsd-cgi imagemagick git
