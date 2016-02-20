@@ -35,6 +35,7 @@ $ sudo crontab -e
 Add:
 ```
 */1 * * * * /etc/apcupsd/cron-apcupsd.sh
+*/1 * * * * /etc/apcupsd/graph-apcupsd.sh
 ```
 alternatively it could be placed at: _/etc/cron.d/graph-apcupsd_
 
