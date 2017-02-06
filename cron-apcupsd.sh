@@ -1,3 +1,5 @@
+#!/bin/bash
+
 apc_status="$(/sbin/apcaccess status | 
     grep -e ^LINEV -e ^LOADPCT -e ^OUTPUTV -e ^ITEMP -e ^BATTV -e ^NUMXFERS -e ^TONBATT| 
         awk '{ printf "%s:", $3}')"
