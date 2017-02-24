@@ -174,12 +174,12 @@ for period in 1h/60 6h/60 1d/120 3d/300 5d/600 1w/600 1m/3600 3m/10800 1y/43200 
         "GPRINT:power_MAX:max\: <span foreground='$PAN3'>%6.1lf W</span>" \
         "GPRINT:power_AVG:avg\: <span foreground='$PAN3'>%6.1lf W</span>" \
         "GPRINT:power_LAST:last\: <span foreground='$PAN3' size='larger'>%6.1lf W</span>\n" \
-        "AREA:ds0${PAN4}90:Line voltage     :" \
+        "AREA:ds0${PAN4}90:Line voltage     " \
         "GPRINT:ds0_MIN:min\: <span foreground='$PAN4'>%6.1lf V</span>" \
         "GPRINT:ds0_MAX:max\: <span foreground='$PAN4'>%6.1lf V</span>" \
         "GPRINT:ds0_AVG:avg\: <span foreground='$PAN4'>%6.1lf V</span>" \
         "GPRINT:ds0_LAST:last\: <span foreground='$PAN4'>%6.1lf V</span>\n" \
-        "LINE1:ds2$PAN5:Output voltage   :" \
+        "LINE1:ds2$PAN5:Output voltage   " \
         "GPRINT:ds2_MIN:min\: <span foreground='$PAN5'>%6.1lf V</span>" \
         "GPRINT:ds2_MAX:max\: <span foreground='$PAN5'>%6.1lf V</span>" \
         "GPRINT:ds2_AVG:avg\: <span foreground='$PAN5'>%6.1lf V</span>" \
