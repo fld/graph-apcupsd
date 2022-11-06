@@ -1,0 +1,11 @@
+# 1% LOADPCT measures: ?.?? Watts
+lwmult='8.65'
+
+# 1 kWh => x.xxx EUR
+kwhmult='0.353136'
+cur_fmt='£'
+
+# By default, graph-apcupsd generates a lot of graphs, if you are using a
+# particularly slow machine (e.g. a first-gen Raspberry Pi) as a UPS monitor
+# it might be worth reducing the number it attempts to generate.
+periods='1h/60 1d/120 1m/3600 1y/43200'
