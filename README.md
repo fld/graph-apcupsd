@@ -29,6 +29,8 @@ sudo rrdtool create /etc/apcupsd/apcupsd.rrd \
 'RRA:LAST:0.5:1:5256000'
 ```
 
+NOTE: The "OUTPUTV" and/or "ITEMP" values may be omitted if your UPS does not support them.
+
 ### Cron job ###
 $ sudo crontab -e
 
