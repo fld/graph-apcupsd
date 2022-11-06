@@ -1,28 +1,33 @@
 #!/bin/bash
-export LC_ALL='en_US.UTF-8'
-rrd_location='/etc/apcupsd/apcupsd.rrd'
-rrd_graphdir='/usr/lib/cgi-bin/apcupsd'
+
+rc_file="$(dirname "$0")/graph-apcupsd.rc"
+test -e "$rc_file" && . "$rc_file"
+
+test -z "$rrd_location" && rrd_location='/etc/apcupsd/apcupsd.rrd'
+test -z "$rrd_graphdir" && rrd_graphdir='/usr/lib/cgi-bin/apcupsd'
 
 # 1% LOADPCT measures: ?.?? Watts
-lwmult='13.5'
+test -z "$lwmult" && lwmult='13.5'
 
 # 1 kWh => x.xxx EUR
-kwhmult='0.1014'
+test -z "$kwhmult" && kwhmult='0.1014'
 
 ### Web page
-gen_gallery=1            # Generate index.html
-gen_favicon=1            # Generate favicon.png
-favicon_source='1hs.png' # Use 1h thumbnail
-favicon_size='32x32'     # 32px size
+test -z "$gen_gallery"    && gen_gallery=1             # Generate index.html
+test -z "$gen_favicon"    && gen_favicon=1             # Generate favicon.png
+test -z "$favicon_source" && favicon_source='1hs.png'  # Use 1h thumbnail
+test -z "$favicon_size"   && favicon_size='32x32'      # 32px size
+
+test -z "$periods" && periods="1h/60 6h/60 1d/120 3d/300 5d/600 1w/600 1m/3600 3m/10800 1y/43200 3y/129600 5y/216000"
 
 ### Colors / Theme
 # http://oss.oetiker.ch/rrdtool/doc/rrdgraph.en.html
 # http://oss.oetiker.ch/rrdtool/doc/rrdgraph_graph.en.html
 #
-rrd_font='DEFAULT:0:DroidSansMono Bold'
-period_fmt='%a %d %b %H\:%M %Y'
-occur_fmt='%d %b %H\:%M'
-cur_fmt='€' # cur_fmt="$(locale cur_fmt_symbol)"
+test -z "$rrd_font"   && rrd_font='DEFAULT:0:DroidSansMono Bold'
+test -z "$period_fmt" && period_fmt='%a %d %b %H\:%M %Y'
+test -z "$occur_fmt"  && occur_fmt='%d %b %H\:%M'
+test -z "$cur_fmt"    && cur_fmt='€' # cur_fmt="$(locale cur_fmt_symbol)"
 
 # 'rrdgraph -c'-colors:
 RRCA='FONT#CBA13A'
@@ -52,7 +57,7 @@ has_OUTPUTV=$(rrdinfo "$rrd_location" | grep -q '^ds\[OUTPUTV\]' && echo "yes")
 
 unset thumbs_html
 # Graph period/steps
-for period in 1h/60 6h/60 1d/120 3d/300 5d/600 1w/600 1m/3600 3m/10800 1y/43200 3y/129600 5y/216000; do
+for period in $periods; do
     step=$(basename "$period")
     period=$(dirname "$period")
     # Graph width/height[/thumb]
